@@ -1,9 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { SequelizeOptions } from 'sequelize-typescript';
 
 @Injectable()
 export class ConfigsService {
   constructor(private readonly config: ConfigService) {}
+
+  get mysql() {
+    const config: SequelizeOptions = {
+      dialect: 'mysql',
+      host: this.config.get<string>('MYSQL_HOST'),
+      username: this.config.get<string>('MYSQL_USERNAME'),
+      password: this.config.get<string>('MYSQL_PASSWORD'),
+      database: this.config.get<string>('MYSQL_DATABASE'),
+      port: 3306,
+    };
+
+    this.checkUndefined(config, 'mysql');
+    return config;
+  }
 
   get server() {
     const config = {

@@ -9,7 +9,8 @@ import { ConfigsService } from '@configs';
       inject: [ConfigsService],
       useFactory: (config: ConfigsService) => {
         return {
-          host: 'localhost',
+          ...config.mysql,
+          synchronize: true,
         };
       },
     }),
