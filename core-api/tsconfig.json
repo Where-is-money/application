@@ -19,9 +19,11 @@
 
     // customs
     "baseUrl": "src",
-    "@libs/*": ["libs/*"],
-    "@middlewares": ["middlewares"],
-    "@configs": ["configs"],
-    "@routes": ["routes"]
+    "paths": {
+      "@libs/*": ["libs/*"],
+      "@middlewares": ["middlewares"],
+      "@configs": ["configs"],
+      "@routes": ["routes"]
+    }
   }
 }
